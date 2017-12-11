@@ -28,7 +28,7 @@ RUN cd /tmp && wget https://github.com/arut/nginx-rtmp-module/archive/v${NGINX_R
   && tar zxf v${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
 
 # Get and install LuaJIT.
-RUN cd /tmp && wget http://luajit.org/download/LuaJIT-${LUA_JIT_VERSION}}.tar.gz \
+RUN cd /tmp && wget http://luajit.org/download/LuaJIT-${LUA_JIT_VERSION}.tar.gz \
   && tar zxf LuaJIT-${LUA_JIT_VERSION}.tar.gz && rm LuaJIT-${LUA_JIT_VERSION}.tar.gz \
   && cd /tmp/LuaJIT-${LUA_JIT_VERSION} \
   && make PREFIX=/opt/luajit \
