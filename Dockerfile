@@ -46,7 +46,7 @@ RUN cd /tmp && wget https://github.com/openresty/lua-nginx-module/archive/v${NGI
 RUN export LUAJIT_LIB=/opt/luajit/lib \
   && export LUAJIT_INC=/opt/luajit/include/luajit-2.1 \
   && cd /tmp/nginx-${NGINX_VERSION} \
-  && ./configure \
+  && ./configure --with-ld-opt="-Wl,-rpath,$LUAJIT_LIB" \
   --prefix=/opt/nginx \
   --add-module=/tmp/nginx-rtmp-module-${NGINX_RTMP_VERSION} \
   --add-module=/tmp/ngx_devel_kit-${NDK_VERSION} \
