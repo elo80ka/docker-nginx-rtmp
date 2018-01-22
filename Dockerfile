@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.6
 LABEL maintainer="Stanislaus Madueke <stan.madueke@gmail.com>"
 
 ENV NGINX_VERSION 1.13.6
