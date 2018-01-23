@@ -101,13 +101,6 @@ RUN cd /tmp/ffmpeg-${FFMPEG_VERSION} && \
   --disable-debug \
   && make && make install && make distclean
 
-# Install `envsubst`:
-RUN set -x && \
-    apk add --update libintl && \
-    apk add --virtual build_deps gettext &&  \
-    cp /usr/bin/envsubst /usr/local/bin/envsubst && \
-    apk del build_deps
-
 # Cleanup.
 RUN rm -rf /var/cache/* /tmp/*
 
