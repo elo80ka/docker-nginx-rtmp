@@ -2,7 +2,7 @@ FROM alpine:3.3
 LABEL maintainer="Stanislaus Madueke <stan.madueke@gmail.com>"
 
 ENV NGINX_VERSION 1.13.6
-ENV NGINX_RTMP_VERSION 1.2.0
+ENV NGINX_RTMP_VERSION 1.2.1
 ENV NGINX_LUA_VERSION 0.10.11
 ENV FFMPEG_VERSION 3.3.4
 ENV LUA_JIT_VERSION 2.1.0-beta3
@@ -24,8 +24,12 @@ RUN cd /tmp && wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
   && rm nginx-${NGINX_VERSION}.tar.gz
 
 # Get nginx-rtmp module.
-RUN cd /tmp && wget https://github.com/arut/nginx-rtmp-module/archive/v${NGINX_RTMP_VERSION}.tar.gz \
-  && tar zxf v${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
+# RUN cd /tmp && wget https://github.com/arut/nginx-rtmp-module/archive/v${NGINX_RTMP_VERSION}.tar.gz \
+#   && tar zxf v${NGINX_RTMP_VERSION}.tar.gz && rm v${NGINX_RTMP_VERSION}.tar.gz
+
+# Get nginx-rtmp fork with support for DASH variants.
+RUN cd /tmp && wget https://github.com/ut0mt8/nginx-rtmp-module/archive/dev.zip \
+  && unzip dev.zip && rm dev.zip && mv ./nginx-rtmp-module-dev ./nginx-rtmp-module-${NGINX_RTMP_VERSION}
 
 # Get and install LuaJIT.
 RUN cd /tmp && wget http://luajit.org/download/LuaJIT-${LUA_JIT_VERSION}.tar.gz \
